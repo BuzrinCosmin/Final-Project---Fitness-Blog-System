@@ -1,0 +1,55 @@
+.card-container {
+    margin: 16px;
+    max-width: 60%;
+    padding-bottom: 30px;
+    
+}
+
+mat-card{
+    padding: 10px;
+    
+    
+}
+
+.example-header-image{
+    background-image: url(icon.png);
+    background-size: cover;
+}
+
+mat-car-content{
+    margin-top: 10px;
+}
+
+mat-card-footer{
+    margin-left: 20px;
+    
+}
+
+.img{
+    object-fit: cover;
+}
+
+.comment-card{
+    margin-top: 20px;
+}
+
+mat-form-field{
+    width: 100%;
+    
+    
+}
+
+
+.icon{
+    color: red;
+    background-color: white ;
+    border: none;
+    cursor: pointer; 
+    
+}
+
+.icon1{
+    background-color: white ;
+    border: none;
+}
+

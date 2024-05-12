@@ -1,0 +1,37 @@
+<div style="background-color: rgb(208, 204, 204); min-height: 91vh;">
+    <a nz-button nzType="link" routerLink="/admin/search" routerLinkActive="activate" class="custom-button">Search</a>
+    <a nz-button nzType="link" routerLink="/admin/ad" routerLinkActive="activate" class="custom-button" style="position: relative; right: -100px;">New Ad</a>
+    
+
+    <div style="padding-top: 100px;" class="child" *ngFor="let ad of ads">
+        <div nz-row>
+            <div nz-col nzSpan="8">
+                <img class="profile" style="height: 130px;" width="200px; border-radius: 10px;" [src]="ad.processedImg"
+                alt="profile" />
+            </div>
+            <div nz-col nzSpan="16">
+                <h2 style="cursor: pointer; color: #108ee9;">
+                {{ad.name}}</h2>
+                <p>{{ad.content}} </p>
+                
+                <hr>
+                <h5> Type: <b> {{ad.type}} </b></h5>
+            <hr>
+
+                <hr>
+                <h5> Price: <b>${{ad.price}}</b></h5>
+            <hr>
+
+            <div style="float: right;">
+                <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
+                 routerLink="/admin/ad/{{ad.id}}" >Update</button>
+                <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
+                 (click)="deleteAd(ad.id)" nzDanger>Delete</button>
+            </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

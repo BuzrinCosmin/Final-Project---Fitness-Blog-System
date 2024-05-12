@@ -1,0 +1,30 @@
+<div style="background-color: rgb(208, 204, 204); min-height: 91vh;">
+    <a nz-button nzType="link" routerLink="/customer/search" routerLinkActive="activate" class="custom-button">Search</a>
+
+    <div style="padding-top: 100px;" class="child" *ngFor="let ad of ads">
+        <div nz-row>
+            <div nz-col nzSpan="8">
+                <img class="profile" style="height: 130px;" width="200px; border-radius: 10px;" [src]="ad.processedImg"
+                alt="profile" />
+            </div>
+            <div nz-col nzSpan="16">
+                <h2 style="cursor: pointer; color: #108ee9;">
+                {{ad.name}}</h2>
+                <p>{{ad.content}} </p>
+                
+                <hr>
+                <h5> Type: <b> {{ad.type}} </b></h5>
+            <hr>
+
+                <hr>
+                <h5> Price: <b>${{ad.price}}</b></h5>
+            <hr>
+            <div style="float: right;" >
+                <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
+                 routerLink="/customer/cart/{{ad.id}}" class="fs">Add To Cart</button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>

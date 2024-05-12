@@ -1,0 +1,62 @@
+<h1>HELLO</h1>
+<div class="inner-content">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="dashboard-filter">
+            <div class="filter-grid" [formGroup]="searchForm">
+                <div class="filter-select-dropdown filter-fields-width">
+
+                    <!-- <nz-form-item>
+                        <nz-form-label nzFor="gender">Name</nz-form-label>
+                        <nz-form-control nzErrorTip="This Input is Required!">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Name" formControlName="name">
+                                <nz-option *ngFor="let name of listOfNames" nzLabel={{name}}
+                                nzValue={{name}}></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item> -->
+
+                    <nz-form-item>
+                        <nz-form-label nzFor="studentClass">Type</nz-form-label>
+                        <nz-form-control nzErrorTip="This Input is Required!">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Type" formControlName="type">
+                                <nz-option *ngFor="let type of listOfType" nzLabel={{type}}
+                                nzValue={{type}}></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                </div>
+
+                    <div class="filter-select-dropdown filter-fields-width">
+                        <button class="filterBtn" nz-button nzType="primary" (click)="search()">Search</button>
+                    </div>   
+            </div>
+        </div>
+    </nz-spin>
+</div>
+
+<div style="background-color: #F8F8F8; min-height: 91vh;">
+
+    <div style="padding-top: 100px;" class="child" *ngFor="let ad of ads">
+        <div nz-row>
+            <div nz-col nzSpan="8">
+                <img class="profile" style="height: 230px;" width="400px; border-radius: 10px;" [src]="ad.processedImg"
+                alt="profile" />
+            </div>
+            <div nz-col nzSpan="16">
+                <h2 style="cursor: pointer; color: #108ee9;">
+                {{ad.name}}</h2>
+                <p>{{ad.content}} </p>
+                
+                <hr>
+                <h5> Type: <b> {{ad.type}} </b></h5>
+            <hr>
+
+                <hr>
+                <h5> Price: <b>${{ad.price}}</b></h5>
+            <hr>
+            </div>
+
+        </div>
+    </div>
+</div>

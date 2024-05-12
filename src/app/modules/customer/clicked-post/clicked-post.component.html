@@ -1,0 +1,97 @@
+<h1>HELLO</h1>
+<div *ngIf="postData" class="card-container">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ postData.name }}</mat-card-title>
+            <mat-card-subtitle>Posted by : {{postData.postedBy }} | Posted On : {{postData.date | date:'medium' }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="postData.img" height="500px" class="img" alt="card Image" />
+        <mat-card-content>
+            {{ postData.content }}
+        </mat-card-content>
+        <br>
+        <mat-chip-set>
+            <mat-chip *ngFor="let tag of postData.tags">{{ tag }}</mat-chip>
+        </mat-chip-set>
+
+        <mat-card-actions class="buttons">
+            <button class="icon" mat-icon-button (click)="likePost()">{{postData.likeCount}} 
+                <mat-icon>favorite</mat-icon></button>
+                <button mat-icon-button class="icon1" style="margin-left: 5px;">{{postData.viewCount}}
+                <mat-icon>remove_red_eye</mat-icon></button>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="comment-card">
+        <mat-card-content>
+            <h4>Add a comment &#9995;</h4> 
+            <div>
+                <form [formGroup]="commentForm">
+                    <mat-form-field appearance="fill">
+                        <button mat-button [matMenuTriggerFor]="menu" style="border: none; font-size: 35px; position: relative; left: 93%;">☺</button>
+            <mat-menu #menu="matMenu">
+                <form [formGroup]="commentForm">
+                    <mat-button-toggle-group style="border:none" #group="matButtonToggleGroup" multiple matInput formControlName="content" [value]="commentForm.value.content">
+                        <mat-button-toggle value="&#9995;" aria-label="1 star">
+                          <mat-icon style="font-size: 20px;">&#9995;</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle value="😀" aria-label="2 stars">
+                          <mat-icon style="font-size: 20px;">😀</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle value="😁" aria-label="3 stars">
+                            <mat-icon style="font-size: 20px;">😁</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle value="😂"  aria-label="4 stars">
+                            <mat-icon style="font-size: 20px;">😂</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle value="😍"  aria-label="5 stars" >
+                            <mat-icon style="font-size: 20px;">😍</mat-icon>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="😛"  aria-label="5 stars" >
+                            <mat-icon style="font-size: 20px;">😛</mat-icon>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="😖"  aria-label="5 stars" >
+                            <mat-icon style="font-size: 20px;">😖</mat-icon>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="😤"  aria-label="5 stars" >
+                            <mat-icon style="font-size: 20px;">😤</mat-icon>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="😱"  aria-label="5 stars" >
+                            <mat-icon style="font-size: 20px;">😱</mat-icon>
+                          </mat-button-toggle>
+                      </mat-button-toggle-group>
+                      <div class="example-selected-value"></div>           
+                    </form>
+            </mat-menu>
+                        <mat-label>Content</mat-label>
+                        <textarea matInput formControlName="content" [value]="commentForm.value.content"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Posted By</mat-label>
+                        <input matInput formControlName="postedBy">
+                    </mat-form-field>
+
+                    <button mat-raised-button (click)="createComment()" color="primary" style="float: right; cursor: pointer;" [disabled]="!commentForm.valid"
+                    >Publish Comment</button>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div style="margin-top: 10px;">
+        <h4>Comments</h4>
+        <mat-card style="margin-top: 10px;" *ngFor="let comment of comment">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ comment.postedBy }}</mat-card-title>
+            <mat-card-subtitle>{{ comment.createdAt | date:'medium' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{ comment.content }}
+        </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+

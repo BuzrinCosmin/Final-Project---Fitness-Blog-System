@@ -1,0 +1,110 @@
+<div style="background-color: #F8F8F8; min-height: 91vh;" *ngIf="ad">
+
+    <div style="padding-top: 100px;" class="child">
+        <div nz-row>
+            <div nz-col nzSpan="8">
+                <img class="profile" style="height: 130px;" width="200px; border-radius: 10px;"
+                 [src]="processedImage" alt="profile" />
+            </div>
+            <div nz-col nzSpan="16">
+                <h2 style="cursor: pointer; color: #108ee9;">
+                {{ad.name}}</h2>
+                <p>{{ad.content}} </p>
+                
+                <hr>
+                <h5> Type: <b> {{ad.type}} </b></h5>
+            <hr>
+
+                <hr>
+                <h5> Price: <b>${{ad.price}}</b></h5>
+            <hr>
+            </div>
+        </div>
+    </div>
+
+
+
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." style="margin-top: 50px;">
+        <div class="dashboard-filter">
+            <form [formGroup]="validateForm">
+                <div class="filter-grid">
+                    <div class="filter-select-dropdown filter-fields-width">
+                   
+                    </div>
+
+                    <div class="filter-select-dropdown filter-fields-width">
+                        <button class="filterBtn" style="margin-left: 1100px; top: -15px; background-color: green;" nz-button nzType="primary"
+                        (click)="buyAd(validateForm.value)">Buy Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div>
+        <mat-card class="review-card">
+            <mat-card-content>
+                <h4>Add a review</h4>
+                <form [formGroup]="reviewForm">
+                <mat-button-toggle-group style="border:none" #group="matButtonToggleGroup" matInput formControlName="stars">
+                    <mat-button-toggle value="1" aria-label="1 star">
+                      <mat-icon>star</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="2" aria-label="2 stars">
+                      <mat-icon>star</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="3" aria-label="3 stars">
+                      <mat-icon>star</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="4"  aria-label="4 stars">
+                      <mat-icon>star</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="5"  aria-label="5 stars" >
+                        <mat-icon>star</mat-icon>
+                      </mat-button-toggle>
+                  </mat-button-toggle-group>
+                  <div class="example-selected-value"> Selected value: {{group.value}}</div>
+                  
+                </form>
+
+                
+                <div>
+                    <form [formGroup]="reviewForm">
+                        <mat-form-field appearance="fill" style="width: 400px;">
+                            <mat-label>Content</mat-label>
+                            <textarea matInput formControlName="content"></textarea>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Posted By</mat-label>
+                            <input matInput formControlName="postedBy">
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button (click)="createReview()" color="primary" style="float: right; cursor: pointer;" [disabled]="!reviewForm.valid"
+                        >Publish Review</button>
+                    </form>
+                </div>
+            </mat-card-content>
+        </mat-card>     
+        </div>
+    </nz-spin>
+
+    <div style="margin-top: 10px;">
+        <h4>Reviews</h4>
+        <mat-card style="margin-top: 10px;" *ngFor="let review of review">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ review.postedBy }}</mat-card-title>
+            
+            <mat-card-subtitle>{{ review.createdAt | date:'medium' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{ review.content }}
+        </mat-card-content>
+        <mat-card-content style="position: absolute; right: 50px; font-size: 25px;"> 
+            {{ review.stars }}
+            <mat-icon style="height: 20px;">star</mat-icon>
+        </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<br>

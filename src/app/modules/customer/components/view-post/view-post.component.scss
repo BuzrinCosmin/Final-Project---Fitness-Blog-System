@@ -1,0 +1,36 @@
+.card-container {
+    margin: 10px;
+    max-width: 60%;
+    padding-bottom: 10px;
+}
+
+mat-card{
+    padding: -300px 50px;
+}
+
+.example-header-image {
+    background-image: url(icon.png);
+    background-size: cover;
+}
+
+.mat-card-footer {
+    margin-left: 80px;
+}
+
+.post-img{
+    width: 300px;
+    height: 200px;
+    margin-top: -1px;
+}
+
+.icon{
+    color: red;
+    background-color: white ;
+    border: none;
+    cursor: pointer;
+}
+
+.icon1{
+    background-color: white ;
+    border: none;
+}

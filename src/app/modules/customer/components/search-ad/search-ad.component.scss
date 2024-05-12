@@ -1,0 +1,44 @@
+.firstFilterInput {
+    min-width: 260px;
+}
+
+.filterBtn {
+    width: 207px;
+    background-color: black;
+    float: right !important;
+}
+
+.inner-content {
+    padding: 32px;
+    background-color: #F8F8F8;
+    padding-bottom: 60px;
+}
+
+.sider-content-wrapper.ant.layout.content{
+    max-height: calc(100vh - 115px);
+    overflow: auto;
+}
+
+p {
+    margin-bottom: 0cm;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2:hover {
+    text-decoration-line: underline;
+}
+
+.pagination {
+    width: 780px;
+
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
